@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<h1>Willkommen, hier können Sie diverse Einheiten umrechnen lassen!</h1>
+<form action="#" th:action="@{/getWeight}" th:object="${formData}" method="post">
+    <p>Umzurechnender Wert: <input type="text" th:field="*{value}" /></p>
+    <select th:field="*{from}" name="von" size="3">
+        <option value="g">Gramm</option>
+        <option value="kg">Kilogramm</option>
+        <option value="t">Tonne</option>
+    </select>
+    <select th:field="*{to}" name="nach" size="3">
+        <option value="g">Gramm</option>
+        <option value="kg">Kilogramm</option>
+        <option value="t">Tonne</option>
+    </select>
+    <p><input type="submit" value="Berechnen" /></p>
+    <p th:text="${formData.resultWeight}">Ergebnis: </p>
+</form>
+
+<form action="#" th:action="@{/getVolume}" th:object="${formData}" method="post">
+    <p>Umzurechnender Wert: <input type="text" th:field="*{value}" /></p>
+    <select th:field="*{from}" name="von" size="3">
+        <option value="gl">Gallone</option>
+        <option value="l">Liter</option>
+        <option value="bfu">Britische Flüssigunze</option>
+    </select>
+    <select th:field="*{to}" name="nach" size="3">
+        <option value="gl">Gallone</option>
+        <option value="l">Liter</option>
+        <option value="bfu">Britische Flüssigunze</option>
+    </select>
+    <p><input type="submit" value="Berechnen" /></p>
+    <p th:text="${formData.resultVolume}">Ergebnis: </p>
+</form>
+
+
+<form action="#" th:action="@{/getDistance}" th:object="${formData}" method="post">
+    <p>Umzurechnender Wert: <input type="text" th:field="*{value}" /></p>
+    <select th:field="*{from}" name="von" size="3">
+        <option value="m">Meter</option>
+        <option value="km">Kilometer</option>
+        <option value="mm">Millimeter</option>
+    </select>
+    <select th:field="*{to}" name="nach" size="3">
+        <option value="m">Meter</option>
+        <option value="km">Kilometer</option>
+        <option value="mm">Millimeter</option>
+    </select>
+    <p><input type="submit" value="Berechnen" /></p>
+    <p th:text="${formData.resultDistance}">Ergebnis: </p>
+</form>
+</body>
+</html>

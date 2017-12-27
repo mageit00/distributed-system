@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: service-unit-calculator-gui
+
+management:
+  security:
+    enabled: false
