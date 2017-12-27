@@ -13,11 +13,26 @@ public class CalculatorController {
     @Autowired
     private WeightService weightService;
 
-    @GetMapping("/gewicht/{von}/{in}/{wert}")
-    public String gewicht(@PathVariable("von") String from, @PathVariable("in") String to, @PathVariable("wert") Float value){
-        return weightService.umrechung(from,to,value);
+    @Autowired
+    private VolumeService volumeService;
+
+    @Autowired
+    private DistanceService distanceService;
+
+    @GetMapping("/weight/{from}/{to}/{value}")
+    public String weight(@PathVariable("from") String from, @PathVariable("to") String to, @PathVariable("value") Float value){
+        return weightService.convertion(from,to,value);
     }
 
+    @GetMapping("/volume/{from}/{to}/{value}")
+    public String volume(@PathVariable("from") String from, @PathVariable("to") String to, @PathVariable("value") Float value){
+        return volumeService.convertion(from,to,value);
+    }
+
+    @GetMapping("/distance/{from}/{to}/{value}")
+    public String distance(@PathVariable("from") String from, @PathVariable("to") String to, @PathVariable("value") Float value){
+        return distanceService.convertion(from,to,value);
+    }
 
 
 

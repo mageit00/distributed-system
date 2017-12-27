@@ -15,24 +15,17 @@ import org.springframework.web.client.RestTemplate;
 @Component
 public class GuiController {
 
-    @Value("${server.port}")
-    private String port;
+    RestTemplate rest = new RestTemplateBuilder().rootUri("http://localhost:8080").build();
 
-    public void test(){
-        System.out.println("Port ------------------------------------>" + port);
-    }
-
-    RestTemplate rest = new RestTemplateBuilder().rootUri("http://localhost:" + port).build();
-
-    @GetMapping("/get")
+    @GetMapping("/")
     public String getGui(Model model){
         model.addAttribute("formData", new FormData());
         return "gui";
     }
 
     @PostMapping("/getWeight")
-    public String umrechnenG(Model model, @ModelAttribute FormData formData){
-        String rel_url = "/gewicht/" + formData.getFrom() + "/" + formData.getTo() + "/" +formData.getValue();
+    public String convertionWeight(Model model, @ModelAttribute FormData formData){
+        String rel_url = "/weight/" + formData.getFrom() + "/" + formData.getTo() + "/" +formData.getValue();
         String result = rest.getForObject(rel_url, String.class);
         FormData data = new FormData();
         data.setResultWeight(result);
@@ -40,9 +33,9 @@ public class GuiController {
         return "gui";
     }
 
-    @PostMapping("/getV")
-    public String umrechnenV(Model model, @ModelAttribute FormData formData){
-        String rel_url = "/volumen/" + formData.getFrom() + "/" + formData.getTo() + "/" +formData.getValue();
+    @PostMapping("/getVolume")
+    public String convertionVolume(Model model, @ModelAttribute FormData formData){
+        String rel_url = "/volume/" + formData.getFrom() + "/" + formData.getTo() + "/" +formData.getValue();
         String result = rest.getForObject(rel_url, String.class);
         FormData data = new FormData();
         data.setResultVolume(result);
@@ -50,9 +43,9 @@ public class GuiController {
         return "gui";
     }
 
-    @PostMapping("/getS")
-    public String umrechnenS(Model model, @ModelAttribute FormData formData){
-        String rel_url = "/strecke/" + formData.getFrom() + "/" + formData.getTo() + "/" +formData.getValue();
+    @PostMapping("/getDistance")
+    public String convertionDistance(Model model, @ModelAttribute FormData formData){
+        String rel_url = "/distance/" + formData.getFrom() + "/" + formData.getTo() + "/" +formData.getValue();
         String result = rest.getForObject(rel_url, String.class);
         FormData data = new FormData();
         data.setResultDistance(result);

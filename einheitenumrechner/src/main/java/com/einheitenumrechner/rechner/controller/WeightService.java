@@ -9,7 +9,7 @@ public class WeightService {
         return "bla";
     }
 
-    public String umrechung (String from, String to, float value){
+    public String convertion (String from, String to, float value){
 
         if (from.equals(to)){
             return Float.toString(value);
