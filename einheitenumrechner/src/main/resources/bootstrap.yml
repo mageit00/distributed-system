@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: service-unit-calculator
+
+management:
+  security:
+    enabled: false
