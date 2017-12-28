@@ -1,0 +1,43 @@
+h1 {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    color: white;
+    background-color: lightsteelblue;
+    box-sizing: border-box;
+    border: 3px solid #555;
+}
+
+form {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  background-color: lightsteelblue;
+  color: white;
+  border: 3px solid #555;
+}
+
+select {
+    color: white;
+    background-color: darkblue;
+    border: 3px solid #555;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.from{
+    color: white;
+    background-color: goldenrod;
+    position: center;
+    border: 3px solid #555;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.pfeil{
+    position: relative;
+    top:50px;
+}
