@@ -52,6 +52,12 @@
         </dependencies>
     </dependencyManagement>
 
+    <modules>
+        <module>einheitenumrechner</module>
+        <module>umrechnerGUI</module>
+        <module>EurekaServer</module>
+    </modules>
+
     <build>
         <plugins>
             <plugin>

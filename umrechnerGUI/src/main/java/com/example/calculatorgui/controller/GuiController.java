@@ -33,6 +33,7 @@ public class GuiController {
     @GetMapping("/")
     public String getGui(Model model){
 
+        System.out.println();
         List<ServiceInstance> instances = discoveryClient.getInstances("service-unit-calculator");
         URI uri = instances.get(0).getUri();
         System.out.println("Hallo: " + uri.toString());
