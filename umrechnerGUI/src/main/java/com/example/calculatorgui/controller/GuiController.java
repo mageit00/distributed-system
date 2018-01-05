@@ -4,6 +4,7 @@ package com.example.calculatorgui.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.stereotype.Component;
@@ -13,8 +14,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.net.URI;
+import java.util.List;
 
 @Controller
 @EnableDiscoveryClient
@@ -29,9 +32,11 @@ public class GuiController {
 
     @GetMapping("/")
     public String getGui(Model model){
-        URI uri = discoveryClient.getInstances("service-unit-calculator").get(0).getUri();
-        rest = new RestTemplateBuilder().rootUri(uri.toString()).build();
 
+        List<ServiceInstance> instances = discoveryClient.getInstances("service-unit-calculator");
+        URI uri = instances.get(0).getUri();
+        System.out.println("Hallo: " + uri.toString());
+        rest = new RestTemplateBuilder().rootUri(uri.toString()).build();
         model.addAttribute("formData", new FormData());
         return "gui";
     }

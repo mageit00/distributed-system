@@ -1,0 +1,4 @@
+FROM openjdk:8
+VOLUME /tmp
+COPY /target/calculator-gui-0.0.1-SNAPSHOT.jar /gui.jar
+CMD ["java","-jar","gui.jar"]

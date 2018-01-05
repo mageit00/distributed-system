@@ -2,6 +2,16 @@ spring:
   application:
     name: service-unit-calculator-gui
 
+eureka:
+  instance:
+    hostname: eureka
+    prefer-ip-address: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+            defaultZone: http://${eureka.instance.hostname}:8761/eureka/
+
 management:
   security:
     enabled: false

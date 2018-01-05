@@ -1,0 +1,35 @@
+version: "3.2"
+
+services:
+  eureka:
+    image: tommel/eurekaserver
+    restart: always
+    container_name: eureka
+    expose:
+      - "8761"
+    ports:
+      - "8080:8761"
+
+  calculator_service:
+    image: tommel/rechner
+    restart: always
+    container_name: calculator
+    depends_on:
+      - eureka
+    expose:
+      - "8080"
+    links:
+      - eureka
+
+  gui:
+    image: tommel/calculator-gui
+    restart: always
+    container_name: gui
+    depends_on:
+      - eureka
+      - calculator_service
+    ports:
+      - "80:8085"
+    links:
+      - eureka
+      - calculator_service

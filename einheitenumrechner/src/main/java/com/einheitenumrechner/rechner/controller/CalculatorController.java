@@ -33,7 +33,4 @@ public class CalculatorController {
     public String distance(@PathVariable("from") String from, @PathVariable("to") String to, @PathVariable("value") Float value){
         return distanceService.convertion(from,to,value);
     }
-
-
-
 }

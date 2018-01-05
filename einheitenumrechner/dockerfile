@@ -1,0 +1,4 @@
+FROM openjdk:8
+VOLUME /tmp
+COPY /target/rechner-0.0.1-SNAPSHOT.jar /rechner.jar
+CMD ["java","-jar","rechner.jar"]
